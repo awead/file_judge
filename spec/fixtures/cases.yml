@@ -1,0 +1,9 @@
+case1:
+  id: 1
+  name: Case 1
+  path: path/to/case/1
+
+case2:
+  id: 2
+  name: Case 2
+  path: path/to/case/2

@@ -11,6 +11,10 @@ describe Case do
     @new.path = "/path/to/files"
     @new.name.should == "New Case"
     @new.path.should == "/path/to/files"
+    @new.save
+    inst = Case.find(@new.id)
+    inst.name.should == "New Case"
   end
+
 
 end

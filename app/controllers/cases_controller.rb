@@ -8,7 +8,7 @@ class CasesController < ApplicationController
     @case = Case.new(params[:case].permit(:name, :path))
    
     if @case.save
-      redirect_to @case
+      redirect_to root_path
     else
       render 'new'
     end

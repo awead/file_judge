@@ -30,3 +30,5 @@ module FileJudge
 
   end
 end
+
+ActiveRecord::Tasks::DatabaseTasks.fixtures_path = "spec/fixtures"
