@@ -1,3 +1,8 @@
+PATH
+  remote: /Users/adamw/Projects/Gems/file_police
+  specs:
+    file_police (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,6 +131,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  file_police!
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.0)
