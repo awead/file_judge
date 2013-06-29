@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">FileJudge</a>
+      <ul class="nav">
+        <%= content_tag :li, link_to("Cases",root_path), class: "active" %>
+        <%= content_tag :li, link_to("New", new_case_path) %>
+      </ul>
+    </div>
+  </div>
 
 </body>
 </html>

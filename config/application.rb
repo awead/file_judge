@@ -25,5 +25,8 @@ module FileJudge
       g.test_framework :rspec
     end
 
+    # For bootstrap-sass compatibility
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
   end
 end
