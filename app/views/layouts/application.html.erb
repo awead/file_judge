@@ -12,8 +12,9 @@
     <div class="navbar-inner">
       <a class="brand" href="#">FileJudge</a>
       <ul class="nav">
-        <%= content_tag :li, link_to("Cases",root_path), class: "active" %>
+        <%= content_tag :li, link_to("Cases",root_path) %>
         <%= content_tag :li, link_to("New", new_case_path) %>
+        <%= render_show_or_edit_link %>
       </ul>
     </div>
   </div>

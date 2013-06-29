@@ -14,5 +14,16 @@ module CasesHelper
     return html.html_safe
   end
 
+  def render_show_or_edit_link
+    if params[:id]
+      if params[:action].match("edit")
+        content_tag :li, link_to("Status", case_path(params[:id]))
+      else
+        content_tag :li, link_to("Edit", edit_case_path(params[:id]))
+      end
+    end
+
+  end
+
 
 end
