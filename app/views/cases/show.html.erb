@@ -1,0 +1,26 @@
+<%= content_tag :h1, "Case ID "+@case.id.to_s %>
+
+<%= content_tag :dl, class: "dl-horizontal" do %>
+  <%= content_tag :dt, "Name" %>
+  <%= content_tag :dd, @case.name %>
+  <%= content_tag :dt, "Path" %>
+  <%= content_tag :dd, @case.path %>
+<% end %>
+
+
+<%= content_tag :h3, "Tickets" %>
+<%= content_tag :table, class: "table table-striped" do %>
+  <%= content_tag :tr do %>
+    <%= content_tag :th, "Violations" %>
+    <%= content_tag :th, "File" %>
+    <%= content_tag :th, "Details" %>
+  <% end %>
+  <% @tickets.each do |t| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td, render_violations_count(t) %>
+      <%= content_tag :td, t.file %>
+      <%= content_tag :td, t.violations.join("<br/>") %>
+    <% end %>    
+  <% end %>
+<% end %>
+

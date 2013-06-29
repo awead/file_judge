@@ -6,7 +6,6 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(params[:case].permit(:name, :path))
-   
     if @case.save
       redirect_to root_path
     else
@@ -20,6 +19,7 @@ class CasesController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
+    @tickets = FilePolice.patrol(@case.path)
   end
 
   def edit 
@@ -27,9 +27,19 @@ class CasesController < ApplicationController
   end
 
   def update
+    @case = Case.find(params[:id])
+    
+    if @case.update(params[:case].permit(:name, :path))
+      redirect_to @case
+    else
+      render 'edit'
+    end
   end
 
-  def delete
+  def destroy
+    @case = Case.find(params[:id])
+    @case.delete
+    redirect_to root_path
   end
 
 end

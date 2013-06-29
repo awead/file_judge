@@ -4,13 +4,16 @@
   <%= content_tag :tr do %>
     <%= content_tag :th, "Name" %>
     <%= content_tag :th, "Path" %>
-    <%= content_tag :th, "Status" %>
+    <%= content_tag :th, "Actions" %>
   <% end %>
   <% @cases.each do |c| %>
     <%= content_tag :tr do %>
       <%= content_tag :td, c.name %>
-      <%= content_tag :td, c.path %>
-      <%= content_tag :td, "to do" %>
+      <%= content_tag :td, link_to(c.path, case_path(c.id)) %>
+      <%= content_tag :td do %>
+        <%= link_to((content_tag(:i, nil, class: "icon-edit")), edit_case_path(c.id))%>
+        <%= link_to((content_tag(:i, nil, class: "icon-trash")), case_path(c.id), confirm: "Delete this case?", method: :delete) %>
+      <% end %>
     <% end %>    
   <% end %>
 <% end %>
