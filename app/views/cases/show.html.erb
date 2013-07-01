@@ -5,6 +5,8 @@
   <%= content_tag :dd, @case.name %>
   <%= content_tag :dt, "Path" %>
   <%= content_tag :dd, @case.path %>
+  <%= content_tag :dt, "Verdict" %>
+  <%= content_tag :dd, @case.verdict %>
 <% end %>
 
-<%= render partial: "tickets" unless @tickets.nil? %>
+<%= render partial: "tickets" unless @tickets.empty? %>

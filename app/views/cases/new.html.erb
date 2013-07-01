@@ -1,8 +1,9 @@
-<h1>New Case</h1>
+<%= content_tag :h1,  "New Case" %>
 
 Supply a name for the case, and a path to where the files are located in the Backlog.  For example:
-<pre>
-  Backlog/DigitalCollections/IMAGES/Adam Matthew Project
-</pre>
+<%= content_tag :pre, "DigitalCollections/IMAGES/Adam Matthew Project" %>
+<%= content_tag :div, class: "alert alert-error" do %>
+ Remember to use the foward-slash to separate directory parts!
+<% end %>
 
 <%= render partial: "case_form" %>

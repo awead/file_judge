@@ -6,12 +6,10 @@
     <%= content_tag :th, "Details" %>
   <% end %>
   <% @tickets.each do |t| %>
-    <% unless t.violations.empty? %>
-      <%= content_tag :tr do %>
-        <%= content_tag :td, render_violations_count(t) %>
-        <%= content_tag :td, t.file %>
-        <%= content_tag :td, t.violations.join("<br/>").html_safe %>
-      <% end %>   
-    <% end %> 
+    <%= content_tag :tr do %>
+      <%= content_tag :td, render_violations_count(t) %>
+      <%= content_tag :td, t.file %>
+      <%= content_tag :td, t.violations.join("<br/>").html_safe %>
+    <% end %>   
   <% end %>
 <% end %>

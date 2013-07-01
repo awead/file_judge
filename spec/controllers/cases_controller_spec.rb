@@ -9,9 +9,18 @@ describe CasesController do
     response.should be_success
   end
 
-  it "should create new case" do
-    post :create, :case => {:name => "New Case", :path => "path/to/case"}
-    response.should be_redirect
+  describe "#new" do
+  
+    it "should create new case" do
+      post :create, :case => {:name => "New Case", :path => "good"}
+      response.should be_redirect
+    end
+
+    it "should not allow cases that don't build" do
+      post :create, :case => {:name => "New Case", :path => "fake/path"}
+      flash.alert.should == ["Unable to build a case from the supplied path. Did you enter it correctly?"]
+    end
+
   end
 
   it "should list all the cases" do
@@ -19,9 +28,18 @@ describe CasesController do
     response.should be_success
   end
 
-  it "should update a case" do
-    put :update, :id => "1", :case => {name: "new name", path: "new path"}
-    response.should be_redirect
+  describe "#update" do
+  
+    it "should update a case" do
+      put :update, :id => "1", :case => {name: "new name", path: "good"}
+      response.should be_success
+    end
+
+    it "should not update a case if it doesn't build" do
+      put :update, :id => "1", :case => {name: "new name", path: "fake"}
+      flash.alert.should == ["Unable to build a case from the supplied path. Did you enter it correctly?"]
+    end
+  
   end
 
   it "should edit a case" do

@@ -1,10 +1,15 @@
 module CasesHelper
 
   def render_violations_count ticket
-    if ticket.violations.empty?
-      content_tag :span, "0", class: "badge badge-success"
+    content_tag :span, ticket.violations.length, class: "badge badge-important"
+  end
+
+  def render_verdict filecase
+    if filecase.verdict.nil?
+      content_tag :span, "jury's still out", class: "label"
     else
-      content_tag :span, ticket.violations.length, class: "badge badge-important"
+      html_class = filecase.verdict.match(/^guilty$/) ? "label-important" : "label-success"
+      content_tag :span, filecase.verdict, class: "label "+html_class
     end
   end
 

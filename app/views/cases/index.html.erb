@@ -4,12 +4,14 @@
   <%= content_tag :tr do %>
     <%= content_tag :th, "Name" %>
     <%= content_tag :th, "Path" %>
+    <%= content_tag :th, "Verdict" %>
     <%= content_tag :th, "Actions" %>
   <% end %>
   <% @cases.each do |c| %>
     <%= content_tag :tr do %>
       <%= content_tag :td, c.name %>
       <%= content_tag :td, link_to(c.path, case_path(c.id)) %>
+      <%= content_tag :td, render_verdict(c) %>
       <%= content_tag :td do %>
         <%= link_to((content_tag(:i, nil, class: "icon-edit")), edit_case_path(c.id))%>
         <%= link_to((content_tag(:i, nil, class: "icon-trash")), case_path(c.id), confirm: "Delete this case?", method: :delete) %>

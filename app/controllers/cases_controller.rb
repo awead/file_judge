@@ -6,10 +6,10 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(params[:case].permit(:name, :path))
-    if @case.save
+    if @case.build && @case.save
       redirect_to root_path
     else
-      flash.alert = @case.errors.full_messages
+      flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]
       render 'new'
     end
   end
@@ -20,10 +20,10 @@ class CasesController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
-    if build_case(@case.path)
-      @tickets = FilePolice.patrol(build_case(@case.path))
-    else
-      flash.alert = ["No tickets found"]
+    if @case.build
+      @tickets = @case.violations
+      @case.trial
+      @case.save
     end
   end
 
@@ -33,10 +33,10 @@ class CasesController < ApplicationController
 
   def update
     @case = Case.find(params[:id])
-    
-    if @case.update(params[:case].permit(:name, :path))
+    if @case.build && @case.update(params[:case].permit(:name, :path))
       redirect_to @case
     else
+      flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]
       render 'edit'
     end
   end
@@ -46,6 +46,5 @@ class CasesController < ApplicationController
     @case.delete
     redirect_to root_path
   end
-
 
 end
