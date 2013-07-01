@@ -14,6 +14,7 @@ describe Case do
     @new.save
     inst = Case.find(@new.id)
     inst.name.should == "New Case"
+    inst.verdict.should be_nil
   end
 
   it "should have errors" do

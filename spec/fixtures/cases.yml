@@ -2,8 +2,16 @@ case1:
   id: 1
   name: Case 1
   path: path/to/case/1
+  verdict: not guilty
 
 case2:
   id: 2
   name: Case 2
   path: path/to/case/2
+  verdict: guilty
+
+case3:
+  id: 3
+  name: Case 3
+  path: path/to/case3
+  verdict: 
