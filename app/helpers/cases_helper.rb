@@ -27,8 +27,6 @@ module CasesHelper
         content_tag :li, link_to("Edit", edit_case_path(params[:id]))
       end
     end
-
   end
-
 
 end
