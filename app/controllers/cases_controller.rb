@@ -11,6 +11,7 @@ class CasesController < ApplicationController
     if @case.save
       redirect_to root_path
     else
+      flash.alert = @case.errors.full_messages
       render 'new'
     end
   end
@@ -23,6 +24,8 @@ class CasesController < ApplicationController
     @case = Case.find(params[:id])
     if build_case(@case.path)
       @tickets = FilePolice.patrol(build_case(@case.path))
+    else
+      flash.alert = ["No tickets found"]
     end
   end
 

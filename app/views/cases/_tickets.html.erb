@@ -1,0 +1,15 @@
+<%= content_tag :h3, "Tickets" %>
+<%= content_tag :table, class: "table table-striped" do %>
+  <%= content_tag :tr do %>
+    <%= content_tag :th, "Violations" %>
+    <%= content_tag :th, "File" %>
+    <%= content_tag :th, "Details" %>
+  <% end %>
+  <% @tickets.each do |t| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td, render_violations_count(t) %>
+      <%= content_tag :td, t.file %>
+      <%= content_tag :td, t.violations.join("<br/>") %>
+    <% end %>    
+  <% end %>
+<% end %>

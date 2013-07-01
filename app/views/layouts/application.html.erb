@@ -19,7 +19,12 @@
     </div>
   </div>
 
-  <%= content_tag :div, yield, class: "container-fluid" %>
+
+
+  <%= content_tag :div, class: "container-fluid" do %>
+    <%= render partial: "flash_messages" unless flash.empty? %>
+    <%= yield %>
+  <% end %>
 
 </body>
 </html>

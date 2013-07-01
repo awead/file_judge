@@ -16,5 +16,10 @@ describe Case do
     inst.name.should == "New Case"
   end
 
+  it "should have errors" do
+    @new.save.should be_false
+    @new.errors.messages[:path].first.should == "can't be blank"
+  end
+
 
 end
