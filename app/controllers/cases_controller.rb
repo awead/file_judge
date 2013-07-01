@@ -1,5 +1,7 @@
 class CasesController < ApplicationController
 
+  include CaseBehaviors
+
   def new
     @case = Case.new
   end
@@ -19,7 +21,9 @@ class CasesController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
-    @tickets = FilePolice.patrol(@case.path)
+    if build_case(@case.path)
+      @tickets = FilePolice.patrol(build_case(@case.path))
+    end
   end
 
   def edit 
@@ -41,5 +45,6 @@ class CasesController < ApplicationController
     @case.delete
     redirect_to root_path
   end
+
 
 end
