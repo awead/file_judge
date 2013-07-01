@@ -1,7 +1,5 @@
 class CasesController < ApplicationController
 
-  include CaseBehaviors
-
   def new
     @case = Case.new
   end
