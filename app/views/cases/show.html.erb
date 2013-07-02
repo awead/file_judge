@@ -1,12 +1,12 @@
-<%= content_tag :h1, "Case ID "+@case.id.to_s %>
+<%= content_tag :div, class: "well" do %>
+  <%= content_tag :h1, @case.name %>
+<% end %>
 
 <%= content_tag :dl, class: "dl-horizontal" do %>
-  <%= content_tag :dt, "Name" %>
-  <%= content_tag :dd, @case.name %>
   <%= content_tag :dt, "Path" %>
   <%= content_tag :dd, @case.path %>
   <%= content_tag :dt, "Verdict" %>
-  <%= content_tag :dd, @case.verdict %>
+  <%= content_tag :dd, render_verdict(@case) %>
 <% end %>
 
 <%= render partial: "tickets" unless @tickets.empty? %>
