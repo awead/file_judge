@@ -2,6 +2,11 @@ class Case < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   
   validates :path, presence: true
+  validate :case_must_build
+
+  def case_must_build
+    errors.add(:build, "directory does not exist") unless self.build
+  end
 
   def violations
     tickets = FilePolice.patrol(build)

@@ -32,7 +32,8 @@ describe CasesController do
   
     it "should update a case" do
       put :update, :id => "1", :case => {name: "new name", path: "good"}
-      response.should be_success
+      flash.alert.should be_nil
+      response.should be_redirect
     end
 
     it "should not update a case if it doesn't build" do

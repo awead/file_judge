@@ -6,7 +6,7 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(params[:case].permit(:name, :path))
-    if @case.build && @case.save
+    if @case.save
       redirect_to root_path
     else
       flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]
@@ -33,7 +33,7 @@ class CasesController < ApplicationController
 
   def update
     @case = Case.find(params[:id])
-    if @case.build && @case.update(params[:case].permit(:name, :path))
+    if @case.update(params[:case].permit(:name, :path))
       redirect_to @case
     else
       flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]

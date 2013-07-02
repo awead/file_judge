@@ -4,24 +4,16 @@ describe Case do
 
   describe "#new" do
 
-    before :each do 
-      @new = Case.new
+    it "should have a valid path" do
+      Case.new(path: "good").save.should be_true
     end
 
-    it "should have a name and a path" do
-      @new.name = "New Case"
-      @new.path = "/path/to/files"
-      @new.name.should == "New Case"
-      @new.path.should == "/path/to/files"
-      @new.save
-      inst = Case.find(@new.id)
-      inst.name.should == "New Case"
-      inst.verdict.should be_nil
+    it "should have no verdict" do
+      Case.new(path: "good").verdict.should be_nil
     end
 
-    it "should have errors" do
-      @new.save.should be_false
-      @new.errors.messages[:path].first.should == "can't be blank"
+    it "can't have a path that doesn't exist" do
+      Case.new(path: "foo").save.should be_false
     end
 
   end
