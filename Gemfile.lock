@@ -127,7 +127,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
-  coffee-rails (~> 4.0.0)
   debugger
   file_police
   jquery-rails
