@@ -50,4 +50,15 @@ describe Case do
 
   end
 
+  describe "searching cases" do
+    it "should return a list of case directories relative to config.basepath" do
+      Case.directories.should include("good", "parent1/parent2/nested")
+    end
+
+    it "should not include the root of config.basepath" do
+      Case.directories.should_not include("")
+      Case.directories.should_not include(nil)
+    end
+  end
+
 end

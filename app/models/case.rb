@@ -1,3 +1,5 @@
+require 'find'
+
 class Case < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   
@@ -24,6 +26,13 @@ class Case < ActiveRecord::Base
 
   def trial
     self.verdict = self.violations.empty? ? "not guilty" : "guilty"
+  end
+
+  def self.directories results = Array.new
+    Find.find(FileJudge::Application.config.basepath).each do |dir|
+      results << File.join(dir.split("/") - FileJudge::Application.config.basepath.split("/")) if File.directory?(dir)
+    end
+    return results.collect { |r| r unless r.empty? }.compact
   end
 
 end

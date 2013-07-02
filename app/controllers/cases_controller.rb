@@ -47,4 +47,12 @@ class CasesController < ApplicationController
     redirect_to root_path
   end
 
+  def query
+    @directories = Case.directories
+    respond_to do |format|
+      format.html { render :layout => false, :text => @directories.to_json }
+      format.json { render :layout => false, :text => @directories.to_json }
+    end
+  end
+
 end

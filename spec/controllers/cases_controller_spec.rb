@@ -53,4 +53,13 @@ describe CasesController do
     response.should be_redirect
   end
 
+  describe "#query" do
+
+    it "should return a list of directories a json object" do
+      get :query
+      response.should be_success
+    end
+
+  end
+
 end
