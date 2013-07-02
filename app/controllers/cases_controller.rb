@@ -10,7 +10,7 @@ class CasesController < ApplicationController
       redirect_to root_path
     else
       flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]
-      render 'new'
+      render "new"
     end
   end
 
@@ -37,7 +37,7 @@ class CasesController < ApplicationController
       redirect_to @case
     else
       flash.now.alert = ["Unable to build a case from the supplied path. Did you enter it correctly?"]
-      render 'edit'
+      render "edit"
     end
   end
 
