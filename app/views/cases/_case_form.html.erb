@@ -7,7 +7,7 @@
     <% end %>
   <% end %>
 
-  <%= content_tag :div, class: "control-group" do %>
+  <%= content_tag :div, class: "control-group", id: "path_group" do %>
     <%= f.label :path, class: "control-label" %>
     <%= content_tag :div, class: "controls" do %>
       <%= f.text_field :path %>
