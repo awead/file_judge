@@ -10,7 +10,7 @@
   <%= content_tag :div, class: "control-group", id: "path_group" do %>
     <%= f.label :path, class: "control-label" %>
     <%= content_tag :div, class: "controls" do %>
-      <%= f.select :path, Case.directories %>
+      <%= f.text_field :path %>
     <% end %>
   <% end %>
 
